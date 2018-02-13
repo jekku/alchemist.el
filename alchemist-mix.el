@@ -174,11 +174,15 @@ arg is set."
   (interactive "Mmix run: \nP")
   (alchemist-mix-execute (list "run" command) prefix))
 
-
 (defun alchemist-mix-format ()
-  "Runs mix format on files specified on .formatter.exs"
+  "Runs mix format on files specified on .formatter.exs. 1.6 and higher only."
   (interactive "Mmix format: \n P$a")
-  (alchemist-mix-execute (list "format" command)))
+  (alchemist-mix-execute ("format")))
+
+(defun alchemist-mix-format-current ()
+  "Runs mix format for the current buffer"
+  (interactive "Mmix format buffer: \n P$a")
+  (alchemist-mix-execute ("format" buffer-file-name)))
 
 (defun alchemist-mix-send-input-to-mix-process (input)
   "Send INPUT to the current running mix task process."
