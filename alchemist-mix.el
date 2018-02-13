@@ -51,6 +51,11 @@
   :type 'string
   :group 'alchemist-mix)
 
+(defcustom alchemist-mix-format-task, "format"
+  "Default task to format elixir files."
+  :type 'string
+  :group 'alchemist-mix)
+
 (defcustom alchemist-mix-test-default-options '()
   "Default options for alchemist test command."
   :type '(repeat string)
@@ -168,6 +173,12 @@ arg is set."
   "Runs the given file or expression in the context of the application."
   (interactive "Mmix run: \nP")
   (alchemist-mix-execute (list "run" command) prefix))
+
+
+(defun alchemist-mix-format ()
+  "Runs mix format on files specified on .formatter.exs"
+  (interactive "Mmix format: \n P$a")
+  (alchemist-mix-execute (list "format" command)))
 
 (defun alchemist-mix-send-input-to-mix-process (input)
   "Send INPUT to the current running mix task process."
